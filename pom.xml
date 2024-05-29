@@ -291,30 +291,29 @@ under the License.
 						<configuration>
 							<skip>${skipTests}</skip>
 							<classpathScope>test</classpathScope>
-							<executable>${basedir}/benchmark.sh</executable>
+							<executable>${basedir}/run-benchmarks.py</executable>
 							<arguments>
-								<argument>-c</argument>
+								<argument>--classpath</argument>
 								<classpath/>
-								<argument>-b</argument>
+								<argument>--jvm</argument>
 								<argument>${executableJava}</argument>
 								<argument>-j</argument>
 								<argument>-Xmx6g</argument>
 								<!--speed up tests-->
-								<argument>-a</argument>
-								<argument>-f</argument>
-								<argument>-a</argument>
+								<argument>--jmh-arg</argument>
+								<argument>"-f"</argument>
+								<argument>--jmh-arg</argument>
 								<argument>1</argument>
-								<argument>-a</argument>
+								<argument>--jmh-arg</argument>
 								<argument>-i</argument>
-								<argument>-a</argument>
+								<argument>--jmh-arg</argument>
 								<argument>1</argument>
-								<argument>-a</argument>
+								<argument>--jmh-arg</argument>
 								<argument>-wi</argument>
-								<argument>-a</argument>
+								<argument>--jmh-arg</argument>
 								<argument>0</argument>
-								<argument>-e</argument>
+								<argument>--benchmark-excludes</argument>
 								<argument>${benchmarkExcludes}</argument>
-								<argument>-m</argument>
 								<argument>${benchmarks}</argument>
 							</arguments>
 						</configuration>
@@ -347,17 +346,16 @@ under the License.
 						</executions>
 						<configuration>
 							<classpathScope>test</classpathScope>
-							<executable>${basedir}/benchmark.sh</executable>
+							<executable>${basedir}/run-benchmarks.py</executable>
 							<arguments>
-								<argument>-c</argument>
+								<argument>--classpath</argument>
 								<classpath/>
-								<argument>-b</argument>
+								<argument>--jvm</argument>
 								<argument>${executableJava}</argument>
-								<argument>-p</argument>
+								<argument>--profiler</argument>
 								<argument>${jmhProfArgument}</argument>
-								<argument>-e</argument>
+								<argument>--benchmark-excludes</argument>
 								<argument>${benchmarkExcludes}</argument>
-								<argument>-m</argument>
 								<argument>${benchmarks}</argument>
 							</arguments>
 						</configuration>
@@ -430,21 +428,18 @@ under the License.
 						</executions>
 						<configuration>
 							<classpathScope>test</classpathScope>
-							<executable>${basedir}/benchmark.sh</executable>
+							<executable>${basedir}/run-benchmarks.py</executable>
 							<arguments>
-								<argument>-j</argument>
-								<argument>--add-opens</argument>
-								<argument>-j</argument>
-								<argument>java.base/java.util=ALL-UNNAMED</argument>
-								<argument>-c</argument>
+								<argument>--jvm-args</argument>
+								<argument>'--add-opens java.base/java.util=ALL-UNNAMED'</argument>
+								<argument>--classpath</argument>
 								<classpath/>
-								<argument>-b</argument>
+								<argument>--jvm</argument>
 								<argument>${executableJava}</argument>
-								<argument>-p</argument>
+								<argument>--profiler</argument>
 								<argument>${jmhProfArgument}</argument>
-								<argument>-e</argument>
+								<argument>--benchmark-excludes</argument>
 								<argument>${benchmarkExcludes}</argument>
-								<argument>-m</argument>
 								<argument>${benchmarks}</argument>
 							</arguments>
 						</configuration>
